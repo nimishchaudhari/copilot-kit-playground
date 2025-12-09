@@ -29,9 +29,9 @@ def create_chat_agent():
     
     # Create a simple reactive agent
     agent = create_react_agent(
-        llm=llm,
+        model=llm,
         tools=[],
-        system_message=system_prompt
+        prompt=system_prompt
     )
     
     return agent
@@ -51,6 +51,8 @@ try:
     
 except Exception as e:
     print(f"✗ Error creating chat agent: {e}")
+    # Exit if we can't create the agent
+    exit(1)
 
 # Initialize CopilotKit SDK
 sdk = CopilotKitSDK(
